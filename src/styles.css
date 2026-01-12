@@ -1,0 +1,213 @@
+body {
+  margin: 0;
+}
+
+.game {
+  width: 400px;
+  height: 600px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.player {
+  width: 40px;
+  height: 40px;
+  background: green;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.platform {
+  width: 80px;
+  height: 10px;
+  position: absolute;
+}
+
+.platform.normal {
+  background: rgb(0, 128, 23);
+}
+
+.platform.red {
+  background: red;
+}
+
+.platform.super {
+  background: rgb(1, 93, 124);
+}
+
+.theme-sun .game {
+  background: #ffe066;
+}
+
+.theme-clouds .game {
+  background: #adb5bd;
+}
+
+.theme-rain .game {
+  background: #74c0fc;
+}
+
+.score {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  z-index: 10;
+}
+.game-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  z-index: 1000;
+}
+.game-over h2 {
+  font-size: 56px;
+  margin: 0 0 10px 0;
+  color: #ff6b6b;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  font-family: 'Arial Black', sans-serif;
+  letter-spacing: 2px;
+}
+.game-over .score-final {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px 40px;
+  border-radius: 12px;
+  margin: 20px 0;
+  min-width: 200px;
+  text-align: center;
+}
+.game-over .score-final p {
+  font-size: 28px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+.game-over button.restart-btn {
+  margin-top: 30px;
+  padding: 18px 50px;
+  font-size: 22px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(238, 90, 36, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.game-over button.restart-btn:hover {
+  background: linear-gradient(135deg, #ff8787 0%, #ff6b35 100%);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(238, 90, 36, 0.5);
+}
+
+.game-over button.restart-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.jetpack {
+  background: purple;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 5;
+}
+
+.enemy {
+  position: absolute;
+  background: crimson;
+  border-radius: 50%;
+  z-index: 6;
+}
+
+.hud {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 20;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.6);
+}
+
+.hud div {
+  margin-bottom: 4px;
+}
+
+.player.jetpack-active::after {
+  content: "";
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 26px;
+  background: linear-gradient(
+    to top,
+    #ff6b00,
+    #ff9f1a,
+    #ffd93d
+  );
+  border-radius: 50%;
+  animation: flame 0.15s infinite alternate;
+  filter: blur(0.5px);
+}
+
+.player.jetpack-active::before {
+  content: "";
+  position: absolute;
+  bottom: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 18px;
+  background: #ff3b00;
+  border-radius: 50%;
+  animation: flameSmall 0.1s infinite alternate;
+}
+
+@keyframes flame {
+  from {
+    height: 22px;
+    opacity: 0.7;
+  }
+  to {
+    height: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes flameSmall {
+  from {
+    height: 14px;
+    opacity: 0.6;
+  }
+  to {
+    height: 20px;
+    opacity: 1;
+  }
+}
+
+.shield {
+  width: 40px;
+  height: 20px;
+  background: #4ecdc4;
+  border-radius: 4px;
+  position: absolute;
+}
+
+.player.shield-active {
+  box-shadow: 0 0 20px 6px rgba(0, 180, 255, 0.9);
+}
